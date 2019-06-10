@@ -4,3 +4,10 @@ data
 __pycache__
 .vscode
 venv
+datasets
+
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
+dev.js
