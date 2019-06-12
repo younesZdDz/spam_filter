@@ -100,4 +100,4 @@ d = {'data': data,
 with open(os.path.join(DUMP_PATH, 'dump.pkl'), 'wb') as file:
     pickle.dump(d, file)
     
-dump(full_pipeline, 'model.joblib') 
+dump(full_pipeline, os.path.join(DUMP_PATH,'model.joblib'))
