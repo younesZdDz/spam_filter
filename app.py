@@ -56,7 +56,7 @@ def index():
 
 
 @app.route("/api/check_mail", methods = ['POST'])
-def question():
+def check_mail():
     try:    
         f = request.files['file']
         f.save('/tmp/email_sample.eml')
@@ -66,6 +66,27 @@ def question():
         structure = get_email_structure(email_sample)
         subject = email_sample['Subject']
         content = email_to_text(email_sample) or '' 
+        data = pd.DataFrame({"subject" : [subject], "content" : [content], "structure": [structure], })
+        tp = TextProcessor()
+        data.content = data.content.apply(lambda x: tp.process(x, allow_stopwords=False, use_stemmer=True))
+        data.subject = data.subject.apply(lambda x : tp.process(x, allow_stopwords = True, use_stemmer=True))
+        data['whole']  = data.subject + ' ' + data.content  
+        pred = model.predict(data)
+        return json.dumps([{'target' : pred[0]}], default=str)
+
+    except Exception as e:
+        traceback.print_exc()
+        return json.dumps([], default=str)
+
+
+@app.route("/api/check_mail_form", methods = ['POST'])
+def check_mail_form():
+    try:    
+        data = request.get_json()
+        print(data)
+        structure = 'text/plain'
+        subject = data['email_subject']
+        content = data['email_content']
         data = pd.DataFrame({"subject" : [subject], "content" : [content], "structure": [structure], })
         tp = TextProcessor()
         data.content = data.content.apply(lambda x: tp.process(x, allow_stopwords=False, use_stemmer=True))
