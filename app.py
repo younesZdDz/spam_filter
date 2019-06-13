@@ -99,5 +99,3 @@ def check_mail_form():
         traceback.print_exc()
         return json.dumps([], default=str)
 
-if __name__ == '__main__':
-  app.run(debug=False, host='0.0.0.0', port = 8000)
