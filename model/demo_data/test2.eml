@@ -1,0 +1,566 @@
+Delivered-To: fy_zadi@esi.dz
+Received: by 2002:a5e:9e4b:0:0:0:0:0 with SMTP id j11csp3390841ioq;
+        Sun, 2 Jun 2019 16:40:33 -0700 (PDT)
+X-Received: by 2002:a67:8901:: with SMTP id l1mr11487068vsd.3.1559518833869;
+        Sun, 02 Jun 2019 16:40:33 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1559518833; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=TUtK60hF0zQrOhYjG1ZBHU5baHth9a+XS66lOKCmiNvKNjTyUB5W2HoxmhTSa9NYzx
+         na/gH1/5HPsdEv9ylOFsz4OhjqPdhI7aTCgB6lr9z1ZeCQO/CVlJ9xoQVTurZeWM8YKJ
+         e8x529/h3BiT/BL+Y2nDo0MCLfHg0qLWl5/EJEzSAe4btFXuYPQOTrDi8iFT76uagCCM
+         cBY0R7pLjC//b9Ki7SA5Bd3clNX7imWoHVBV07UalAu7NrdJeCHwORl6PMPy3vuQ3Ezo
+         qAVSVM2xaiB+UAmJHHn/zxRj3INfdYDBSUA8ywP2NK426O9JCuaC03T9lL/Fq4rYCwvQ
+         KtIw==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-subscribe:list-unsubscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:sender:dkim-signature;
+        bh=73dK79AwFI80NaGMh66H3yPBtonADRRhppn09winu90=;
+        b=jsjCHRpL4/5/nroYdckEs++g877s4ngSssR0ER+fVbpAyF1HB/IEhFGr6PY8porYm4
+         WOb6G0gpKwbDho6ZxC70CQWa1R5jrBnhrv8GOIGsdg4e1DuMKpxdB2kmchgE8lbKi6a/
+         SmcUbkZ7Td+p0dIj9VpG0r/7P4o3c0GW+lkDhQZerRdlzs9F5Lui153Hl9pRKA6aKX+T
+         p4LezuTOI55AQAsQyQF447mZEh9u35UjtzB69GAi9qyulljcXhZ1dXj1g87UVV1zEkos
+         41dAbe7JhTEyQCJ/75BayU8LEw/HZVbzc8C2Qn8CEUZhgvGZYuOOZEkg2E9HhsobaYIB
+         sLAQ==
+ARC-Authentication-Results: i=3; mx.google.com;
+       dkim=pass header.i=@esi.dz header.s=google header.b=hc2uDHWs;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of 2cssitg1+bncbdb6bhmwuupbb4f42htqkgqe467nbyq@esi.dz designates 209.85.220.69 as permitted sender) smtp.mailfrom=2cssitg1+bncBDB6BHMWUUPBB4F42HTQKGQE467NBYQ@esi.dz;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE arc=pass) header.from=gmail.com
+Return-Path: <2cssitg1+bncBDB6BHMWUUPBB4F42HTQKGQE467NBYQ@esi.dz>
+Received: from mail-sor-f69.google.com (mail-sor-f69.google.com. [209.85.220.69])
+        by mx.google.com with SMTPS id i128sor93245vsi.37.2019.06.02.16.40.33
+        for <fy_zadi@esi.dz>
+        (Google Transport Security);
+        Sun, 02 Jun 2019 16:40:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 2cssitg1+bncbdb6bhmwuupbb4f42htqkgqe467nbyq@esi.dz designates 209.85.220.69 as permitted sender) client-ip=209.85.220.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@esi.dz header.s=google header.b=hc2uDHWs;
+       arc=pass (i=2 spf=pass spfdomain=gmail.com dkim=pass dkdomain=gmail.com dmarc=pass fromdomain=gmail.com);
+       spf=pass (google.com: domain of 2cssitg1+bncbdb6bhmwuupbb4f42htqkgqe467nbyq@esi.dz designates 209.85.220.69 as permitted sender) smtp.mailfrom=2cssitg1+bncBDB6BHMWUUPBB4F42HTQKGQE467NBYQ@esi.dz;
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE arc=pass) header.from=gmail.com
+ARC-Seal: i=2; a=rsa-sha256; t=1559518833; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=AAenjm/h7Z5tb7BNS6L1KYhn3O8gWeL00BlrfFYIBfIRjDzmZw5FWBDNeokaleXHGa
+         fK5YyYOD85KwqZYuksj52ofNfZm0E/RZwxGcYHfgQcM4eriPNWwToj8dbcm1Rze7N2dZ
+         Ph5XkUFSs6Up7CGO8Yf3odtVHPR8HYgKbgRNKMRQYhCn6UoGv7gh8e1d8wMbwMLy0Szz
+         A0lNiY4/fl3L1I7kvtuKyqKGA99rN5qdDLV5UF0WGw1tOiwNJ/EHZUJ7adhmRbqFWotJ
+         kWvphjU1EDVf1rzou3M0zan/BnlYuN0epyZqr7N13b7Ek0ZtCgA9hlwSRQh+P9k4jnLo
+         5Fww==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-subscribe:list-unsubscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:sender:dkim-signature;
+        bh=73dK79AwFI80NaGMh66H3yPBtonADRRhppn09winu90=;
+        b=vEKEIknNoQZGsUXUigc9xXQ0C84WVIzfvmP80ol+jeNev9K0egomYzu8QMZ7T9SkC3
+         OxqcFF0wEvHYdy+W+gCvV6HW+PNjra8GeyinSMYu2wNb+itJhEWIoDFio6AIbkSYA914
+         chvZS3eaeDvLvkCF2VGQMeLM8M/GTeySKSvydusm8I6yhNYjXM4JYhxwDFloi5A+Cxk2
+         tZcQt7g3msXmYcHCHJD8moplXvkZ9StNKBIDH0+SayXzqFHMJcmx3qsFhPdcWvIn4d+h
+         CeoGVy/kiaIz7SptGrW4FPj5Zdm31iYdVjkTLjHQCrKriTSbVcv6hOnRYu629qU5RJ2S
+         qExQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DYlazLSr;
+       spf=pass (google.com: domain of icist.educ@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=icist.educ@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=esi.dz; s=google;
+        h=sender:mime-version:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-unsubscribe:list-subscribe;
+        bh=73dK79AwFI80NaGMh66H3yPBtonADRRhppn09winu90=;
+        b=hc2uDHWsmawPGvBG5PHp3K8UlHTESNt5uMaI5IkHO31OBkHXBlf0V7O/4jVdSmlnUJ
+         7lbz4SF+xOSkBA70gtq+a75YGQwCx+7A+ayl+2POaYKpaudCAeyAB2wxIGmRmV/UlE0K
+         5FVbwIJr1Qhw+w0eFzxqtbZhpYdsUDTDtFYWeqxVxLcT3QsgUDswZS3tX982/1TP2sYt
+         OT8Tb4wZBJrsniKYvhz+dQSSp1L6sAmTASzXuuN1Kp01V1S9Vl5VWVZt0VmNwIHeROzQ
+         JOhKEu1SxNiJ2XMgqpSvT4zW8DNDNM2XLMLqtI4ha+dRkfO4zEFvuKoJ+kgeVGN5hVBw
+         btZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
+         :to:x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-unsubscribe:list-subscribe;
+        bh=73dK79AwFI80NaGMh66H3yPBtonADRRhppn09winu90=;
+        b=KmNIQ/IpIYKzJanUcJz7rDG4EgiL37eaFYHMQXCgBk+H0Sp9kRc6HPe3ZxAY/3ZUIJ
+         jAvICk/bBugewW5ljMk/BSB4FGnggIGKHTEwFliE0o996Z+ocYntEIRj5BvyfTXeSnm5
+         YJ05BlnhJEcw3AZD/upuwQZ+VMirV5IxLW97l6fWIkmKlaNlwJvvPKPjpjxTTv6Y1rqC
+         qDu36gYWsFDiYJAWJ8g9JuOlaNjSdy+z5VC7n6MN7R3WXR8v0VeoidmZ8o4llXv41jIQ
+         +9uAVwunbZOGzPHp+uvi6rSZBcE91f9LCAxH8lPEiAFCG0eYICruQmucvN3WGJE1dzJe
+         3X6A==
+Sender: 2cssitg1@esi.dz
+X-Gm-Message-State: APjAAAV/xN4Jlu0FpHk/NolnPiM+ahbnOB6qNT8IxtNAPUo5nzA9RteS
+	EAK1tsmyFrMNNszHJ1B6S5EAF57M
+X-Google-Smtp-Source: APXvYqww6AU6q7j1/R/6xzzFRkPxnyxkU96985UnKM+KehWXHD/WxNcOdzvFxo5D84B1Y90GIRHeSw==
+X-Received: by 2002:a67:8d03:: with SMTP id p3mr11500601vsd.190.1559518833010;
+        Sun, 02 Jun 2019 16:40:33 -0700 (PDT)
+X-BeenThere: 2cssitg1@esi.dz
+Received: by 2002:ab0:6990:: with SMTP id t16ls289796uaq.2.gmail; Sun, 02 Jun
+ 2019 16:40:32 -0700 (PDT)
+X-Received: by 2002:ab0:23cb:: with SMTP id c11mr10867229uan.140.1559518831233;
+        Sun, 02 Jun 2019 16:40:31 -0700 (PDT)
+X-BeenThere: 2cssit@esi.dz
+Received: by 2002:a67:8e88:: with SMTP id q130ls1705671vsd.16.gmail; Sun, 02
+ Jun 2019 16:40:30 -0700 (PDT)
+X-Received: by 2002:a67:704:: with SMTP id 4mr10954472vsh.201.1559518830677;
+        Sun, 02 Jun 2019 16:40:30 -0700 (PDT)
+X-BeenThere: 2cs@esi.dz
+Received: by 2002:a67:f59a:: with SMTP id i26ls635622vso.6.gmail; Sun, 02 Jun
+ 2019 16:40:30 -0700 (PDT)
+X-Received: by 2002:a67:c78f:: with SMTP id t15mr8952713vsk.211.1559518830234;
+        Sun, 02 Jun 2019 16:40:30 -0700 (PDT)
+X-BeenThere: etudiants@esi.dz
+Received: by 2002:a67:8e88:: with SMTP id q130ls1705661vsd.16.gmail; Sun, 02
+ Jun 2019 16:40:29 -0700 (PDT)
+X-Received: by 2002:a67:ca91:: with SMTP id a17mr2800046vsl.172.1559518829779;
+        Sun, 02 Jun 2019 16:40:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559518829; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ZG/9xpsa0cYKCdxM2WWwmjATEcZbck2EmeXdi5kma0szMROrjOfCRHe+kxAvcev7r9
+         +iiVjSr26Lk6sm9/f82rSONv42Qa0Fz6vYZSdC1F0d8xP0ATRsbA//ysdDtBZq0KOfPh
+         0mf0T0jde5QaVxBQ3x6uStK2y4S93qfgCdCfnOlXqGSnGiRRw1kAFyBb0n9alCHTNsJp
+         g58r1lkFWHGNCuH0xVASD/41L4J2PA92ODprXjhqhDxSHueNy69lVF0l5/8Q7MN//0jf
+         cXhmeTx8GA0PXG1U0xw5qePnoyk6++ptyMO56+YY4yKHbfF8OPcjC8R5WCS6DBBGbVA1
+         darw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=73dK79AwFI80NaGMh66H3yPBtonADRRhppn09winu90=;
+        b=Q9ZA24CvdE34Dfqy2D8bEa0lfJ5W8isUm5bh+ZpRpq16MZff53Nmf3fNqX1G6pPVGg
+         9kMCRYukxSNpM7M/Vc+cGrqj8XUmEz5y8Mt6R5sR+QBmhRUgO3aiOcqghNSyiic+3NSy
+         DkP5z/aRujwGyzaXpIhBiX7wh8XcrYG7DRFb7NcVkwz3OY7D4EkZzc7wMA4+Iom/t1B9
+         jYsQ+bxkhbjsPlQAycO0RSLO5TxY247u9g5r1fslw5coKVn3pCrZ6QF6vC2xkPX9eHo1
+         k5cfuosEyZE7iA9bBSqG6ubR/BU6Q3R5jq3dMEc/QYr0XRQ2y8V3MmONyLcWtI8g62ea
+         HNEw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DYlazLSr;
+       spf=pass (google.com: domain of icist.educ@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=icist.educ@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 60sor110461uay.33.2019.06.02.16.40.29
+        for <etudiants@esi.dz>
+        (Google Transport Security);
+        Sun, 02 Jun 2019 16:40:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of icist.educ@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+X-Received: by 2002:ab0:60d0:: with SMTP id g16mr9929671uam.85.1559518827102;
+ Sun, 02 Jun 2019 16:40:27 -0700 (PDT)
+MIME-Version: 1.0
+From: Icist Icist <icist.educ@gmail.com>
+Date: Mon, 3 Jun 2019 01:40:18 +0200
+Message-ID: <CAHyK0r1fh_NN+TaCr7w=qWoe8djQTYzLY4NoPj2A12GHT+K97g@mail.gmail.com>
+Subject: acm - Abstract Submission: 10th June
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000b5cbd2058a5fc5b0"
+Bcc: etudiants@esi.dz
+X-Original-Sender: icist.educ@gmail.com
+X-Original-Authentication-Results: mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b=DYlazLSr;       spf=pass
+ (google.com: domain of icist.educ@gmail.com designates 209.85.220.65 as
+ permitted sender) smtp.mailfrom=icist.educ@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Precedence: list
+Mailing-list: list 2cssitg1@esi.dz; contact 2cssitg1+owners@esi.dz
+List-ID: <2cssitg1.esi.dz>
+X-Spam-Checked-In-Group: etudiants@esi.dz
+X-Google-Group-Id: 635969650211
+List-Post: <https://groups.google.com/a/esi.dz/group/2cssitg1/post>, <mailto:2cssitg1@esi.dz>
+List-Help: <https://support.google.com/a/esi.dz/bin/topic.py?topic=25838>, <mailto:2cssitg1+help@esi.dz>
+List-Archive: <https://groups.google.com/a/esi.dz/group/2cssitg1/>
+List-Unsubscribe: <mailto:googlegroups-manage+635969650211+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/esi.dz/group/2cssitg1/subscribe>
+List-Subscribe: <https://groups.google.com/a/esi.dz/group/2cssit/subscribe>, <mailto:2cssit+subscribe@esi.dz>
+
+--000000000000b5cbd2058a5fc5b0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+*ACM - ICCES' 2019 indexed** by **ACM - Digital Library **& Scopus*
+
+*5th ACM - International Conference of Computing for Engineering and
+Sciences*
+
+*Hammamet, Tunisia 20-22 July 2019*
+
+*http://www.ijist.net/ICCES2019/ <http://www.ijist.net/ICCES2019/> *
+
+*Call for Paper ACM - ICCES' 2019*
+
+Please accept our apologies in case of multiple receptions
+
+Please send to interested colleagues and students
+
+
+
+-       *acm - Abstract Submission: 10th June 2019*
+
+-       *ICCES=E2=80=992018 Conference: 20 =E2=80=93 22 July 2019*
+
+[image: *]     *Submission link: **Submission Web pages is: *
+
+*https://easychair.org/conferences/?conf=3Dicces20191*
+<https://easychair.org/conferences/?conf=3Dicces20191>
+
+*CONFERENCE SCOPE*
+
+*ICCES=E2=80=992018 will be composed of research presentations, keynote lec=
+tures,
+invited presentations, tutorials, panel discussions, and poster
+presentations. *
+
+*An important mission of ICCES=E2=80=992019 is "Providing a unique platform=
+ for a
+diverse community. *
+
+
+
+*PAPER SUBMISSION: *
+
+*If your work is related to ICCES=E2=80=992019 topics, it is now a good opp=
+ortunity
+to submit your contribution through the Easychair system.*
+
+*- Full paper (5 to 12 pages) formatted according to the ACM style:
+**https://www.acm.org/publications/proceedings-template
+<https://www.acm.org/publications/proceedings-template>*
+
+*-  Short paper (2 to 4 pages). *
+
+*-  Abstract Paper (500 words).*
+
+*- Poster Abstract (300 words). *
+
+*- Research in progress:  Ongoing research from undergraduates,
+graduates/postgraduates and professionals.*
+
+
+
+*Authors are invited to submit papers through the Eeasychair system.
+Submission Web pages is: *
+
+*https://easychair.org/conferences/?conf=3Dicces20191*
+<https://easychair.org/conferences/?conf=3Dicces20191>
+
+*-  The accepted papers will be published in proceedings with ISBN in the
+ACM Digital Library & Scopus.*
+
+*- If you encounter problems for submission, contact us at Email:
+**icist.educ@gmail.com
+<https://fr.mail.yahoo.com/neo/b/compose?to=3Dicist.educ@gmail.com>*
+
+
+
+
+
+*Publications: ICCES=E2=80=992019=E2=80=99s selected high quality and prese=
+nted papers,
+with 30-40% extension and revision, will be recommended for a special issue
+to indexed Journals.*
+
+
+
+*For more details, please visit
+**http://www.ijist.net/ICCES2019/submission.html
+<http://www.ijist.net/ICCES2019/submission.html> *
+
+--000000000000b5cbd2058a5fc5b0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">
+<div class=3D"gmail-mailContent gmail-spam"><div id=3D"gmail-message1510067=
+89" class=3D"gmail-messagebody gmail-undoreset gmail-clearfix"><div id=3D"g=
+mail-yiv6235490227"><div dir=3D"ltr">
+<div class=3D"gmail-yiv6235490227gmail-mailContent"><div id=3D"gmail-yiv623=
+5490227gmail-message1775665522" class=3D"gmail-yiv6235490227gmail-messagebo=
+dy gmail-yiv6235490227gmail-undoreset gmail-yiv6235490227gmail-clearfix"><d=
+iv id=3D"gmail-yiv6235490227gmail-yiv5806894060"><div dir=3D"ltr">
+<div class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-mailContent"><div=
+ id=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-message228578231" class=
+=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-messagebody gmail-yiv623549=
+0227gmail-yiv5806894060gmail-undoreset gmail-yiv6235490227gmail-yiv58068940=
+60gmail-clearfix"><div id=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yi=
+v7501835303"><div dir=3D"ltr">
+<div class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmai=
+l-mailContent"><div id=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv75=
+01835303gmail-message2066961921" class=3D"gmail-yiv6235490227gmail-yiv58068=
+94060gmail-yiv7501835303gmail-messagebody gmail-yiv6235490227gmail-yiv58068=
+94060gmail-yiv7501835303gmail-undoreset gmail-yiv6235490227gmail-yiv5806894=
+060gmail-yiv7501835303gmail-clearfix"><div id=3D"gmail-yiv6235490227gmail-y=
+iv5806894060gmail-yiv7501835303gmail-yiv5150424928"><div dir=3D"ltr">
+<div class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmai=
+l-yiv5150424928gmail-mailContent"><div id=3D"gmail-yiv6235490227gmail-yiv58=
+06894060gmail-yiv7501835303gmail-yiv5150424928gmail-message21304145" class=
+=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-yiv51504=
+24928gmail-messagebody gmail-yiv6235490227gmail-yiv5806894060gmail-yiv75018=
+35303gmail-yiv5150424928gmail-undoreset gmail-yiv6235490227gmail-yiv5806894=
+060gmail-yiv7501835303gmail-yiv5150424928gmail-clearfix"><div id=3D"gmail-y=
+iv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-yiv5150424928gmail-=
+yiv0206844657"><div dir=3D"ltr">
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt" al=
+ign=3D"center"><b><span style=3D"font-size:12pt;font-family:New;color:rgb(3=
+1,78,121);background:rgb(251,228,213) none repeat scroll 0% 0%" lang=3D"EN-=
+GB">ACM - ICCES&#39; 2019=C2=A0indexed</span></b><b><span style=3D"font-siz=
+e:12pt;font-family:New;color:rgb(46,116,181);background:rgb(251,228,213) no=
+ne repeat scroll 0% 0%" lang=3D"EN-GB"> by </span></b><b><span style=3D"fon=
+t-size:12pt;font-family:New;color:rgb(83,129,53);background:rgb(251,228,213=
+) none repeat scroll 0% 0%" lang=3D"EN-GB">ACM - Digital Library </span></b=
+><b><span style=3D"font-size:12pt;font-family:New;background:rgb(251,228,21=
+3) none repeat scroll 0% 0%" lang=3D"EN-GB">&amp;<span style=3D"color:rgb(4=
+6,116,181)"> Scopus</span></span></b><b><span style=3D"font-size:12pt;font-=
+family:New;color:rgb(31,78,121)" lang=3D"EN-GB"><span></span></span></b></p=
+>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt" al=
+ign=3D"center"><b><i><span style=3D"font-size:12pt;font-family:New;color:rg=
+b(68,84,106)" lang=3D"EN-GB">5<sup>th</sup> ACM
+- International Conference of Computing for Engineering and Sciences<span><=
+/span></span></i></b></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt" al=
+ign=3D"center"><b><span style=3D"font-size:12pt;font-family:New;background:=
+rgb(251,228,213) none repeat scroll 0% 0%" lang=3D"EN-GB">Hammamet,
+Tunisia 20-22 July 2019</span></b><b><span style=3D"font-size:12pt;font-fam=
+ily:New" lang=3D"EN-GB"><span></span></span></b></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 12pt;text-align:center;line-height:normal;font-size:11pt" align=
+=3D"center"><i><span style=3D"font-size:9pt;font-family:New" lang=3D"EN-GB"=
+><a rel=3D"nofollow" target=3D"_blank" href=3D"http://www.ijist.net/ICCES20=
+19/" style=3D"color:blue;text-decoration:underline">http://www.ijist.net/IC=
+CES2019/</a>
+<span></span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;text-align:center;line-height:normal;font-size:11pt" al=
+ign=3D"center"><b><i><span style=3D"font-size:12pt;font-family:New;color:rg=
+b(68,84,106);background:yellow none repeat scroll 0% 0%" lang=3D"EN-GB">Cal=
+l for Paper ACM - ICCES&#39; 2019</span></i></b><b><i><span style=3D"font-s=
+ize:12pt;font-family:New;color:rgb(68,84,106)" lang=3D"EN-GB"><span></span>=
+</span></i></b></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><span style=3D"font-=
+size:12pt;font-family:New" lang=3D"EN-GB">Please accept our apologies in ca=
+se of multiple receptions<span></span></span></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><span style=3D"font-=
+size:12pt;font-family:New" lang=3D"EN-GB">Please send to interested colleag=
+ues and students <span></span></span></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><span style=3D"font-=
+size:12pt;font-family:New" lang=3D"EN-GB"><span>=C2=A0</span></span></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528gmail-MsoListParagraphCx=
+SpFirst" style=3D"margin:0cm 0cm 0.0001pt 36pt;line-height:normal;font-size=
+:11pt"><span style=3D"font-size:12pt;font-family:New" lang=3D"EN-GB"><span>=
+-<span style=3D"font:7pt New">=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 </span><=
+/span></span><span dir=3D"LTR"></span><i><span style=3D"font-size:12pt;font=
+-family:New" lang=3D"EN-GB">acm - Abstract Submission: <b><span style=3D"co=
+lor:rgb(192,0,0)">10th June 2019</span></b><span></span></span></i></p>
+
+
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528gmail-MsoListParagraphCx=
+SpLast" style=3D"margin:0cm 0cm 0.0001pt 36pt;line-height:normal;font-size:=
+11pt"><span style=3D"font-size:12pt;font-family:New" lang=3D"EN-GB"><span>-=
+<span style=3D"font:7pt New">=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 </span></=
+span></span><span dir=3D"LTR"></span><i><span style=3D"font-size:12pt;font-=
+family:New" lang=3D"EN-GB">ICCES=E2=80=992018 Conference: 20 =E2=80=93 22 J=
+uly 2019<span></span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt 36pt;line-height:normal;font-size:11pt"><span style=3D"=
+font-family:Symbol" lang=3D"EN-GB"><span><img alt=3D"*" width=3D"18" height=
+=3D"18"><span style=3D"font:7pt New">=C2=A0=C2=A0=C2=A0=C2=A0 </span></span=
+></span><span dir=3D"LTR"></span><i><span style=3D"font-size:12pt;font-fami=
+ly:New" lang=3D"EN-GB">Submission link: </span></i><i><span style=3D"font-f=
+amily:New" lang=3D"EN-GB">Submission Web pages is: <span></span></span></i>=
+</p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 6pt;text-align:center;line-height:normal;font-size:11pt" align=
+=3D"center"><span style=3D"font-size:9pt"><a rel=3D"nofollow" target=3D"_bl=
+ank" href=3D"https://easychair.org/conferences/?conf=3Dicces20191" style=3D=
+"color:blue;text-decoration:underline"><b><span lang=3D"EN-GB">https://easy=
+chair.org/conferences/?conf=3Dicces20191</span></b></a></span><span style=
+=3D"font-size:9pt;font-family:New" lang=3D"EN-GB"><span></span></span></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><b><span style=3D"fo=
+nt-size:12pt;font-family:New" lang=3D"EN-GB">CONFERENCE SCOPE<span></span><=
+/span></b></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">ICCES=E2=80=992018 will be composed of resear=
+ch presentations, keynote lectures,
+invited presentations, tutorials, panel discussions, and poster presentatio=
+ns. <span></span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">An important mission of ICCES=E2=80=992019 is=
+ &quot;Providing a unique platform for
+a diverse community. <span></span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><span style=3D"font-=
+size:12pt;font-family:New" lang=3D"EN-GB"><span>=C2=A0</span></span></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><b><span style=3D"fo=
+nt-size:12pt;font-family:New" lang=3D"EN-GB">PAPER SUBMISSION: <span></span=
+></span></b></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">If your work is related to ICCES=E2=80=992019=
+ topics, it is now a good opportunity
+to submit your contribution through the Easychair system.<span></span></spa=
+n></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">- Full paper (5 to 12 pages) formatted accord=
+ing to the ACM style: </span></i><i><span style=3D"font-family:New"><a rel=
+=3D"nofollow" target=3D"_blank" href=3D"https://www.acm.org/publications/pr=
+oceedings-template" style=3D"color:blue;text-decoration:underline"><span la=
+ng=3D"EN-GB">https://www.acm.org/publications/proceedings-template
+</span></a></span></i><i><span style=3D"font-family:New" lang=3D"EN-GB"><sp=
+an></span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">-=C2=A0 Short paper (2 to 4 pages). <span></s=
+pan></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">-=C2=A0 Abstract Paper (500 words).<span></sp=
+an></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">- Poster Abstract (300 words). <span></span><=
+/span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">- Research in progress:=C2=A0 Ongoing researc=
+h from undergraduates,
+graduates/postgraduates and professionals.<span></span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB"><span>=C2=A0</span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">Authors are invited to submit papers through =
+the Eeasychair system. Submission
+Web pages is: <span></span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 6pt;text-align:center;line-height:normal;font-size:11pt" align=
+=3D"center"><span style=3D"background:yellow none repeat scroll 0% 0%"><a r=
+el=3D"nofollow" target=3D"_blank" href=3D"https://easychair.org/conferences=
+/?conf=3Dicces20191" style=3D"color:blue;text-decoration:underline"><b><spa=
+n lang=3D"EN-GB">https://easychair.org/conferences/?conf=3Dicces20191</span=
+></b></a></span><i><span style=3D"font-size:10pt;font-family:New" lang=3D"E=
+N-GB"><span></span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">- <span>=C2=A0</span>The accepted papers will=
+ be published
+in proceedings with ISBN in the ACM Digital Library &amp; Scopus.<span></sp=
+an></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">- If you encounter problems for submission, c=
+ontact us at Email: </span></i><i><span style=3D"font-size:10pt;font-family=
+:New"><a rel=3D"nofollow" target=3D"_blank" href=3D"https://fr.mail.yahoo.c=
+om/neo/b/compose?to=3Dicist.educ@gmail.com" style=3D"color:blue;text-decora=
+tion:underline"><span lang=3D"EN-GB">icist.educ@gmail.com</span></a></span>=
+</i><i><span style=3D"font-family:New"> <span lang=3D"EN-GB"><span></span><=
+/span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB"><span>=C2=A0</span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB"><span>=C2=A0</span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">Publications: ICCES=E2=80=992019=E2=80=99s se=
+lected high quality and presented papers, with
+30-40% extension and revision, will be recommended for a special issue to
+indexed Journals.<span></span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB"><span>=C2=A0</span></span></i></p>
+
+<p class=3D"gmail-yiv6235490227gmail-yiv5806894060gmail-yiv7501835303gmail-=
+yiv5150424928gmail-yiv0206844657gmail-yiv7131166528MsoNormal" style=3D"marg=
+in:0cm 0cm 0.0001pt;line-height:normal;font-size:11pt"><i><span style=3D"fo=
+nt-family:New" lang=3D"EN-GB">For more details, please visit=C2=A0 </span><=
+/i><i><span style=3D"font-size:10pt;font-family:New" lang=3D"EN-GB"><a rel=
+=3D"nofollow" target=3D"_blank" href=3D"http://www.ijist.net/ICCES2019/subm=
+ission.html" style=3D"color:blue;text-decoration:underline">http://www.ijis=
+t.net/ICCES2019/submission.html</a>
+</span></i></p>
+
+</div></div></div></div>
+
+</div></div></div></div>
+
+</div></div></div></div>
+
+</div></div></div></div>
+
+</div></div></div></div>
+
+</div>
+
+--000000000000b5cbd2058a5fc5b0--
