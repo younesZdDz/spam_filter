@@ -253,8 +253,10 @@
                     $("#answer_file").empty();
                     if (data[0]['target'] == "0" )
                         $("#answer_file").append('Your email is &nbsp<b style="color : green">NOT SPAM</b>.')
-                    else
+                    else if (data[0]['target'] == "1" )
                         $("#answer_file").append('Your email is &nbsp<b style="color : red">SPAM</b>.')
+                    else
+                        $("#answer_file").append('<b>Please submit a correct email format file</b>.')
 
                     var progress_bar_id = "#progress-wrp";
                     $(progress_bar_id + " .progress-bar").css("width", "0%");
@@ -315,8 +317,10 @@
                 $("#answer_form").empty();
                 if (data[0]['target'] == "0" )
                     $("#answer_form").append('Your email is &nbsp<b style="color : green">NOT SPAM</b>.')
-                else
+                else if (data[0]['target'] == "1" )
                     $("#answer_form").append('Your email is &nbsp<b style="color : red">SPAM</b>.')
+                else 
+                    $("#answer_file").append('<b>Please submit the full form</b>.')
             }
         });
     }).on('reset', function (e) {
