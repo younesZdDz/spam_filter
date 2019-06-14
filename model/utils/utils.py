@@ -19,7 +19,7 @@ def fetch_spam_data(spam_url, ham_url, spam_path ):
 
 
 
-SPAM_PATH = os.path.join("datasets", "spam")
+SPAM_PATH = os.path.join("model", "datasets", "spam")
 
 def load_email(is_spam, filename, spam_path=SPAM_PATH):
     directory = "spam" if is_spam else "easy_ham"
