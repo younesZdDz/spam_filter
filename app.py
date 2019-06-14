@@ -32,6 +32,7 @@ import email.policy
 
 import nltk
 nltk.download('wordnet')
+nltk.download('stopwords')
 
 from flask import request
 from flask import Flask
@@ -98,4 +99,3 @@ def check_mail_form():
     except Exception as e:
         traceback.print_exc()
         return json.dumps([], default=str)
-
