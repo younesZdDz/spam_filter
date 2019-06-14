@@ -294,7 +294,7 @@
         
     }).on('reset', function (e) {
         console.log("clear")
-        $("#answer_file").remove()
+        $("#answer_file").empty()
         $("#answer_file").append('Please, fill form and submit it')
     })
 
@@ -321,7 +321,7 @@
         });
     }).on('reset', function (e) {
         console.log("clear")
-        $("#answer_form").remove()
+        $("#answer_form").empty()
         $("#answer_form").append('Please, fill form and submit it')
     })
 </script>
