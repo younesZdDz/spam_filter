@@ -9,7 +9,7 @@ certifi==2019.3.9
 chardet==3.0.4
 Click==7.0
 docutils==0.14
-Flask==0.12.4
+Flask==1.0
 gast==0.2.2
 gensim==3.4.0
 grpcio==1.21.1
